@@ -1,0 +1,11 @@
+How to create DB container:
+	docker run --name homeinventorydb -v /Users/santtu/Dropbox/Docker/Volumes/MySQL/HomeInventoryDB:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=kaksikoiraa -d mysql
+	
+	
+How to build webapp image:
+	/Users/santtu/Dropbox/Docker/Builds/HomeInventoryAPP
+	docker build -t webapp .
+	
+	
+How to run single python app in container:
+	docker run -it --rm --name XXX -v "/Users/santtu/Dropbox/Docker/Volumes/Python/HomeInventoryAPP:/data" -w /data python:3.5 python app.py

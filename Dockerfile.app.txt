@@ -1,0 +1,20 @@
+# HIAPP application
+FROM hiapp-base:2017-07-10
+MAINTAINER Kai Käpölä <kai.kapola@iki.fi>
+
+# Copy the example script to the application directory
+# Create folder for app
+RUN mkdir /hiapp
+RUN mkdir /hiapp/templates
+
+
+# This is not needed until app is ready
+#COPY hiapp.py /hiapp
+#COPY ./templates/* /hiapp/templates/
+
+WORKDIR /hiapp
+
+# Expose port 80 for the server
+EXPOSE 80
+CMD ["sleep 10"]
+CMD ["gunicorn","-b","0.0.0.0:80","-w","3","-k","gevent","--log-file","-","--log-level","debug","--access-logfile","-","hiapp:app"]
